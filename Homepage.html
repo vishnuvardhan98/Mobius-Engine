@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MobiusEngine - Land Job Interviews 10x Faster</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary-blue: #2551E6;
+            --dark-blue: #001033;
+            --light-blue: #EBF1FF;
+            --white: #FFFFFF;
+            --light-gray: #F5F7FA;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            color: var(--dark-blue);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-blue);
+        }
+        
+        button, .btn {
+            background-color: var(--primary-blue);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        button:hover, .btn:hover {
+            background-color: #1a41c8;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-blue), #4b74ff);
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .logo img {
+            height: 30px;
+            margin-right: 10px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: white;
+            font-weight: 500;
+        }
+        
+        .get-started-btn {
+            background-color: white;
+            color: var(--primary-blue);
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-blue), #4b74ff);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .hero-text {
+            width: 50%;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        .hero-image {
+            width: 40%;
+            position: relative;
+        }
+        
+        .e-book {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 20px;
+            max-width: 250px;
+        }
+        
+        .e-book-title {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .e-book-subtitle {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .e-book-logo {
+            width: 60px;
+            margin-bottom: 10px;
+        }
+        
+        .download-link {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            font-size: 0.9rem;
+        }
+        
+        .download-icon {
+            background-color: var(--light-blue);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 10px;
+        }
+        
+        /* How We Work Section */
+        .how-we-work {
+            background-color: white;
+            padding: 80px 0;
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+        }
+        
+        .step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 23%;
+            text-align: center;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            border: 2px solid var(--primary-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+        
+        .step-title {
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        /* Services Section */
+        .services {
+            background-color: var(--light-gray);
+            padding: 80px 0;
+        }
+        
+        .service-cards {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+            width: calc(50% - 15px);
+        }
+        
+        .service-title {
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .service-description {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .service-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 20px;
+        }
+        
+        .service-price span {
+            font-size: 1rem;
+            color: #666;
+            font-weight: 400;
+        }
+        
+        .service-features {
+            margin-top: 30px;
+        }
+        
+        .feature {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .feature-icon {
+            color: var(--primary-blue);
+            margin-right: 10px;
+            min-width: 20px;
+        }
+        
+        /* Plans Section */
+        .plans {
+            padding: 80px 0;
+        }
+        
+        .plan-cards {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        
+        .plan-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+            width: calc(33.33% - 20px);
+            position: relative;
+        }
+        
+        .plan-tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--light-blue);
+            color: var(--primary-blue);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .advance-plan {
+            background-color: var(--primary-blue);
+            color: white;
+            margin-top: 40px;
+        }
+        
+        .advance-plan .plan-title,
+        .advance-plan .plan-price,
+        .advance-plan .feature-text {
+            color: white;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            background-color: var(--light-gray);
+            padding: 80px 0;
+        }
+        
+        .testimonial-cards {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+            width: calc(33.33% - 20px);
+        }
+        
+        .testimonial-video {
+            background-color: #eee;
+            height: 200px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .play-icon {
+            background-color: var(--primary-blue);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .testimonial-content {
+            padding: 20px;
+            background-color: var(--primary-blue);
+            color: white;
+        }
+        
+        .more-testimonials {
+            display: flex;
+            justify-content: center;
+            margin-top: 40px;
+            gap: 20px;
+        }
+        
+        /* About Us Section */
+        .about-us {
+            background-color: var(--dark-blue);
+            background: linear-gradient(135deg, var(--dark-blue), #001f66);
+            color: white;
+            padding: 80px 0;
+        }
+        
+        .team-member {
+            display: flex;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+        
+        .team-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 30px;
+            position: relative;
+        }
+        
+        .team-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .linkedin-icon {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background-color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .team-info h3 {
+            color: white;
+            margin-bottom: 10px;
+        }
+        
+        .team-bio {
+            margin-top: 10px;
+        }
+        
+        .about-links {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        
+        .about-link {
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+        
+        .about-link svg {
+            margin-left: 5px;
+        }
+        
+        /* Why Choose Us Section */
+        .why-choose-us {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .benefits {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .benefit {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 30px;
+            width: calc(33.33% - 20px);
+            text-align: center;
+        }
+        
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--light-blue);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .benefit-title {
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 30px 0;
+        }
+        
+        .contact-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .contact-text {
+            font-weight: 600;
+        }
+        
+        .contact-btn {
+            background-color: white;
+            color: var(--primary-blue);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+        }
+        
+        .arrow-icon {
+            margin-left: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            background-color: white;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+        
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .contact-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .contact-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .contact-info {
+            color: var(--dark-blue);
+            font-weight: 500;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: var(--light-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .footer-bottom {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+            
+            .step {
+                width: 48%;
+                margin-bottom: 30px;
+            }
+            
+            .steps {
+                flex-wrap: wrap;
+            }
+            
+            .service-card {
+                width: 100%;
+            }
+            
+            .plan-cards, .testimonial-cards, .benefits {
+                flex-wrap: wrap;
+            }
+            
+            .plan-card, .testimonial-card, .benefit {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content {
+                flex-direction: column;
+            }
+            
+            .hero-text, .hero-image {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .hero-image {
+                margin-top: 40px;
+            }
+            
+            .e-book {
+                margin: 0 auto;
+            }
+            
+            .team-member {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .team-photo {
+                margin: 0 0 20px 0;
+            }
+            
+            .contact-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">
+                    <svg width="30" height="30" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 0C22.4 0 0 22.4 0 50C0 77.6 22.4 100 50 100C77.6 100 100 77.6 100 50C100 22.4 77.6 0 50 0ZM75 55C70.6 65.2 60.8 72 50 72C39.2 72 29.4 65.2 25 55H75ZM25 45C29.4 34.8 39.2 28 50 28C60.8 28 70.6 34.8 75 45H25Z" fill="white"/>
+                    </svg>
+                    MobiusEngine
+                </a>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="plans.html">Plans</a></li>
+                    <li><a href="testimonials.html">Testimonials</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li class="dropdown">
+                        <a href="#">More</a>
+                    </li>
+                </ul>
+                <a href="contact.html" class="get-started-btn">Get Started</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Land job interviews<br>10x faster</h1>
+                    <p>Custom-built resumes that match your goals, keywords, and recruiter expectations.</p>
+                    <a href="#" class="btn">Get Started →</a>
+                </div>
+                <div class="hero-image">
+                    <div class="e-book">
+                        <h3 class="e-book-title">2024 / 2025<br>HIRING TRENDS</h3>
+                        <p class="e-book-subtitle">A job seeker's guide to what to expect in 2025 in the new normal of pursuing tech careers.</p>
+                        <img src="/api/placeholder/60/60" alt="Mobius Logo" class="e-book-logo">
+                        <p class="download-link">
+                            Download Free E-Book
+                            <span class="download-icon">↓</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How We Work Section -->
+    <section class="how-we-work">
+        <div class="container">
+            <h2 class="section-title">How we work?</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Submit Intake Form</h3>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">We do the search and curation for list of jobs</h3>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">You approve, we do the tedious part (applying)</h3>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">You get the interviews</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">Resume Building & Coaching</h2>
+            <p class="section-subtitle" style="text-align: center; margin-bottom: 40px;">Let's talk about where you're headed — and how your resume can get you there.<br>Schedule a call to get started.</p>
+            
+            <div class="service-cards">
+                <div class="service-card">
+                    <h3 class="service-title">Resume Rebuild</h3>
+                    <p class="service-description">Crafted for senior to VP-level professionals ready for their next big step.</p>
+                    <h4 class="service-price">$1000 <span>one time</span></h4>
+                    
+                    <div class="service-features">
+                        <div class="feature">
+                            <span class="feature-icon">✓</span>
+                            <span class="feature-text">3× 30-min coaching</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">✓</span>
+                            <span class="feature-text">Focused on storytelling, not just formatting</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">✓</span>
+                            <span class="feature-text">Analyst + full application team on Pacific hours</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">✓</span>
+                            <span class="feature-text">Tailored to your target industry, company, or role</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">✓</span>
+                            <span class="feature-text">Direct work with our co-founder (ex-Google, JP Morgan)</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">✓</span>
+                            <span class="feature-text">Executive coaching from UC Berkeley alum with 10+ yrs experience</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">✓</span>
+                            <span class="feature-text">Resume Rebuild portfolio available upon request</span>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="btn" style="margin-top: 20px;">Get Started →</a>
+                </div>
+                
+                <div class="service-card">
+                    <h3 class="service-title">Interview Prep</h3>
+                    <p class="service-description">Two sessions to sharpen your story, confidence, and clarity — fast.</p>
+                    <h4 class="service-price">$500 <span>one time</span></h4>
+                    
+                    <div class="service-features">
+                        <div class="feature">
+                            <span class="feature-icon">✓</span>
+                            <span class="feature-text">2× 45-min live coaching with our co-founder</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">✓</span>
+                            <span class="feature-text">Real-time, practical feedback</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">✓</span>
+                            <span class="feature-text">Build clarity, empathy & executive presence</span>
+                        </div>
+                        <div class="feature">
+                            <span class="feature-icon">✓</span>
+                            <span class="feature-text">For senior and leadership roles — technical & non-technical</span>
+                        </div>
+                    </div>
+                    
+                    <a href="#" class="btn" style="margin-top: 20px;">Get Started →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-text">STILL HAVE DOUBTS?</div>
+                <a href="contact.html" class="contact-btn">
+                    Contact us
+                    <span class="arrow-icon">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <svg width="30" height="30" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M50 0C22.4 0 0 22.4 0 50C0 77.6 22.4 100 50 100C77.6 100 100 77.6 100 50C100 22.4 77.6 0 50 0ZM75 55C70.6 65.2 60.8 72 50 72C39.2 72 29.4 65.2 25 55H75ZM25 45C29.4 34.8 39.2 28 50 28C60.8 28 70.6 34.8 75 45H25Z" fill="#2551E6"/>
+                    </svg>
+                    <h2 style="margin-top: 10px;">MobiusEngine</h2>
+                </div>
+                
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <span class="contact-label">Address</span>
+                        <span class="contact-info">1875 Mission St Ste 103 #450<br>San Francisco, CA 94103</span>
+                    </div>
+                </div>
+                
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <span class="contact-label">Email</span>
+                        <a href="mailto:finance@mobiusengine.ai" class="contact-info">finance@mobiusengine.ai</a>
+                    </div>
+                </div>
+                
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <span class="contact-label">Telephone</span>
+                        <a href="tel:650-889-6026" class="contact-info">650-889-6026</a>
+                    </div>
+                </div>
+                
+                <div class="footer-socials">
+                    <span class="contact-label">Socials</span>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75736C21.3679 10.8826 22 12.4087 22 14V21H18V14C18 13.4696 17.7893 12.9609 17.4142 12.5858C17.0391 12.2107 16.5304 12 16 12C15.4696 12 14.9609 12.2107 14.5858 12.5858C14.2107 12.9609 14 13.4696 14 14V21H10V14C10 12.4087 10.6321 10.8826 11.7574 9.75736C12.8826 8.63214 14.4087 8 16 8Z" stroke="#2551E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M6 9H2V21H6V9Z" stroke="#2551E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M4 6C5.10457 6 6 5.10457 6 4C6 2.89543 5.10457 2 4 2C2.89543 2 2 2.89543 2 4C2 5.10457 2.89543 6 4 6Z" stroke="#2551E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16 8C17.5913 8 19.1174 8.63214 20.2426 9.75
